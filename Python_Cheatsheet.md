@@ -65,8 +65,6 @@ for i in range(len(str)):
 
 
 # List(mutable,changeable,ordered sequence of elements):-
-# In lists
-* As lists are mutable so if we create two lists namely l1 and l2 and l1=[1,2,3] and in l2 we say l2=l1 then they are refrencing same continuos memory at this time but is we say now l1=2 now l1 is taking refernce from a integer value 2 , but if we re assign the same list as previously l1=[1,2,3] now they both are taking refernce from different continuos memory to test that we can change any element present in l1 like l1[0]=44 now if we print both l1 and l2 we will get l1 => [44,2,3] but l2 => [1,2,3] because list is mutable so new memory is created. because if user changes any thing in one list it will affect other so thats why we see these discrpencies and it is not actually a discrepency. 
 
 lst_example=[]
      or
@@ -112,6 +110,33 @@ print(sum(list1))=> 20
 # list comprehension in list :
 nums=[x**2 for x in range(2,15)]
 print(nums) => [4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196]
+
+# Mutable and Immutable concept in lists
+* As lists are mutable so if we create two lists namely l1 and l2 and l1=[1,2,3] and in l2 we say l2=l1 then they are refrencing same continuos memory at this time but is we say now l1=2 now l1 is taking refernce from a integer value 2 , but if we re assign the same list as previously l1=[1,2,3] now they both are taking refernce from different continuos memory to test that we can change any element present in l1 like l1[0]=44 now if we print both l1 and l2 we will get l1 => [44,2,3] but l2 => [1,2,3] because list is mutable so new memory is created. because if user changes any thing in one list it will affect other so thats why we see these discrpencies and it is not actually a discrepency. 
+
+and there is one shortcut also if we assign like this l2= l1[:] now a copy of the same value is assigned now they are referencing different continuous memory at this time.
+
+# Or we can check if l1 is l2
+l1=[1,2,3]
+
+l2=l1
+
+print(l1==l2)
+
+print(l1 is l2)
+
+l2=[1,2,3]
+
+print(l1==l2)
+
+print(l1 is l2)
+
+* output:- 
+True
+True
+True
+False
+
 
 # Dictionary
 number_of_students_in_each_subject={"physics":30,"Mathematics":50,"Chemistry":20}
