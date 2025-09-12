@@ -1,22 +1,34 @@
 # Understand basics of python:-
-10**2= 100
+10**2=> 100
+
 3 * 'anubhav'=> anubhavanubhavanubhav
-10*2= 20
+
+10*2=> 20
 
 # single slash => a/b => float division we will get value as float 20/10= 2.0
 # double slash => a//b => integer division we will get value as integer 20//10= 2
 
 # Inbuilt function to check the datatype is:-
 type(1)=> int
+
+
 type("hello")=> str
+
+
 type(10.0)=>float
+
+
 type(True)=> bool
 
 # print statement:-
 firstName="anubhav"
+
 lastName="Choudhary"
+
 print("my first name is {} and my last name is {} ".format(firstName,lastName))=>order matters
+
 or
+
 print("my first name is {first} and my last name is {last}".format(first=firstName,last=lastName)) order doesnt matter=> my first name is anubhav and my last name is Choudhary
 
 my_str="hello"
@@ -36,15 +48,18 @@ Mutability = the object’s contents can change in-place (e.g., list, dict, set)
 
 Assignment (=) never copies; it just binds a name to an object.
 
-# Question where will these names resides
+# Question=> where will these names resides
 * In Python, names are created inside namespaces—not in the “heap vs stack” sense, but in mapping-like scopes that bind a name (the label) to an object (the value).
 
 # String 
 # Methods=> upper,lower,isaplhanum ,isdigit,isalpha,count,islower,isupper
 str.isalphanum() ...
 
-* split  str[2:9] to jump characters is string str[2:9:2] => it will jump every other character
-len(str)=> to find the length
+* split  str[2:9] to jump characters is string str
+
+* [2:9:2] => it will jump every other character
+
+* len(str)=> to find the length
 for i in range(len(str)):
      return
 
