@@ -116,6 +116,10 @@ print(nums) => [4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196]
 
 and there is one shortcut also if we assign like this l2= l1[:] now a copy of the same value is assigned now they are referencing different continuous memory at this time.
 
+or  we can import copy
+and then assign l1=[1,2,3]
+l2=copy.copy(l1)
+
 # Or we can check if l1 is l2
 l1=[1,2,3]
 
