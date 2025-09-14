@@ -51,6 +51,45 @@ Assignment (=) never copies; it just binds a name to an object.
 # Question=> where will these names resides
 * In Python, names are created inside namespaces—not in the “heap vs stack” sense, but in mapping-like scopes that bind a name (the label) to an object (the value).
 
+
+# Python Iteration 
+
+• Iterable vs Iterator
+– Iterable = a thing you can loop over (list, string, dict, range, file, generator).
+– Iterator = the “walker” that hands you items one by one.
+– You get an iterator from an iterable using iter(obj).
+– You pull the next item using next(it); when it’s over, next raises StopIteration.
+
+• How a for-loop really works
+– First it calls iter(iterable) once to get an iterator.
+– Then it keeps calling next(...) to get items.
+– When StopIteration happens, the loop ends.
+
+• List iterators
+– iter([1,2,3]) gives a new “cursor” object (list_iterator).
+– It does not copy the list; it just remembers the current index.
+– Every call to iter(the_same_list) gives a fresh, independent cursor.
+– Iterators are single-use; once finished, make a new one.
+
+• “Why does print show 0x…?”
+– Printing an iterator shows a default identity string like <list_iterator at 0x…>.
+– That’s just the object’s identity, not the first element. The real items come from next(...).
+
+• Files act as their own iterators
+– A file object already is an iterator over its lines (iter(f) is f is True).
+– next(f) gives the next line; at end, StopIteration is raised.
+– Use a with-block so files close automatically.
+– Text lines usually include a trailing newline; strip it if you don’t want it.
+
+• Generators (easy custom iterators)
+– A function that uses yield automatically creates an iterator.
+– Behaves like any other iterator: single pass, ends with StopIteration.
+
+• Do’s and Don’ts
+– Don’t modify a list while iterating it; if needed, iterate over a copy.
+– For another pass over data, create a fresh iterator (or materialize to a list if it’s small).
+– For huge data (files, streams), prefer iterators—they’re memory-friendly.
+
 # String 
 # Methods=> upper,lower,isaplhanum ,isdigit,isalpha,count,islower,isupper
 str.isalphanum() ...
