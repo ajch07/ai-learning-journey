@@ -203,6 +203,51 @@ default_value="tasty"
 new=dict.fromkeys(tea,default_value) => {'Masala': 'tasty', 'ginger': 'tasty', 'lemon': 'tasty'}
 new=dict.fromkeys(tea,tea) => {'Masala': ['Masala', 'ginger', 'lemon'], 'ginger': ['Masala', 'ginger', 'lemon'], 'lemon': ['Masala', 'ginger', 'lemon']}
 
+# Function
+ * syntax
+def definitionORfunction_name(parameters):
+     return
 
+# lambda function
+cube=lambda x: x**3
+print(cube(2)) => 8
 
+# function with unknown number of parameters
+def sum(*args):
+     sum(args)
 
+     or
+def sum(*args):
+     sum=0
+     for i in args:
+          sum+=i
+     return sum
+
+def print_in_kwargs(**kwargs):
+     for key,value in kwargs.items():
+          print(f"{key}:{value}")
+
+print_in_kwargs("name"="shaktiman","power"="Lazer","enemy":"dr. jaykaal")
+
+# Yield instead of Return in functions or definitions
+
+def even_generator(limit):
+    for i in range(2,limit,2):
+        yield i
+for num in even_generator(10):
+    print(num)
+
+# Scope Closure
+
+def chaicoder(num):
+    def actual(x):
+        return x**num
+    return actual
+
+f=chaicoder(2)
+g=chaicoder(3)
+
+print(f(2)) => 4
+print(g(2)) => 8
+
+# OOPS
