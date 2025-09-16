@@ -364,3 +364,85 @@ Mahindra xuv600
 electric
 petrol or diesel
 2
+# making stop assigning the value again for a variable once it is done it is done
+class Car():
+    total_car=0
+    def __init__(self,brand,name):
+        self.__brand=brand
+        self.__name=name
+        Car.total_car+=1
+    def get_brand(self):
+        return self.__brand
+    def fullname(self):
+        return f"{self.__brand} {self.__name}"
+    def fuel_type(self):
+        return "petrol or diesel"
+    @staticmethod
+    def get_description():
+        return "Car is means of transport"
+
+    @property <= can access a method in the form of property.
+    def get_name(self): <== to make the variable safe for not getting assign value again once set.
+        return self.__name
+        
+class ElectricCar(Car):
+    def __init__(self,brand,name,battery_size):
+        super().__init__(brand,name)
+        self.battery_size=battery_size
+    def fuel_type(self):
+        return "electric"
+my_Car=ElectricCar("Mahindra","xuv600","800km")
+print(my_Car.get_brand())
+# print(my_Car.name)
+print(my_Car.battery_size)
+print(my_Car.fullname())
+print(my_Car.fuel_type())
+carNew=Car("Hyundai","verna")
+print(carNew.fuel_type())
+print(Car.total_car)
+print(Car.get_description())
+print(my_Car.get_name)
+
+# isinstance
+print(isinstance(my_Car,Car)) => True
+print(isinstance(my_Car,ElectricCar)) => True
+
+# Multiple Inheritance:
+
+class Engine():
+    def __init__(self,hasEngine):
+        self.hasEngine=hasEngine
+class Battery():
+    def __init__(self,hasBattery):
+        self.hasBattery=hasBattery
+class ElectricCar2(Engine,Battery):
+    def __init__(self,hasBattery,hasEngine,brand,model):
+        Battery.__init__(self,hasBattery)
+        Engine.__init__(self,hasEngine)
+        self.brand=brand
+        self.model=model
+fortuner=ElectricCar2("True","True","Toyota","Fortuner")
+print(fortuner.hasBattery)
+print(fortuner.hasEngine)
+
+or
+
+class Engine:
+    def __init__(self, hasEngine, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.hasEngine = hasEngine
+
+class Battery:
+    def __init__(self, hasBattery, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.hasBattery = hasBattery
+
+class ElectricCar2(Engine, Battery):
+    def __init__(self, hasBattery, hasEngine, brand, model):
+        super().__init__(hasEngine=hasEngine, hasBattery=hasBattery)
+        self.brand = brand
+        self.model = model
+
+fortuner=ElectricCar2(True, True, "Toyota", "Fortuner")
+print(fortuner.hasBattery)  # True
+print(fortuner.hasEngine)   # True
