@@ -326,7 +326,7 @@ print(my_Car.name)
 print(my_Car.battery_size)
 print(my_Car.fullname())
 
-# polymorphism and total number of instances created:-
+# polymorphism and class variable (total number of instances created):-
 class Car():
     total_car=0
     def __init__(self,brand,name):
