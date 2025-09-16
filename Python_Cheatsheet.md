@@ -251,3 +251,116 @@ print(f(2)) => 4
 print(g(2)) => 8
 
 # OOPS
+
+class Car():
+    def __init__(self,brand,model):
+        self.brand=brand
+        self.model=model
+
+my_car=Car("Hyundai","Verna")
+print(my_car.brand) => Verna
+print(my_car.model) => Hyundai
+
+* defining a function inside loop:-
+
+class Car():
+    def __init__(self,brand,model):
+        self.brand=brand
+        self.model=model
+    def car_full_name(self):
+        print(f"{self.brand} {self.model}")
+my_car=Car("hyundai","Verna")
+print(my_car.brand)
+my_car.car_full_name()
+
+mine example:-
+
+class Animal():
+    def __init__(self,specie,breed):
+        self.specie=specie
+        self.breed=breed
+    def speak(self,voice):
+        self.voice=voice
+        print(f"this animal is {self.specie} and it is a {self.breed} and it {self.voice}")
+dog=Animal("Dog","Rottweiler")
+print(dog.breed)
+print(dog.specie)
+
+dog.speak("barks")
+
+# Inheritance
+class Car():
+    def __init__(self,brand,name):
+        self.brand=brand
+        self.name=name
+    def fullname(self):
+        return f"{self.brand} {self.name}"
+        
+class ElectricCar(Car):
+    def __init__(self,brand,name,battery_size):
+        super().__init__(brand,name)
+        self.battery_size=battery_size
+my_Car=ElectricCar("Mahindra","xuv600","800km")
+print(my_Car.brand)
+print(my_Car.name)
+print(my_Car.battery_size)
+print(my_Car.fullname())
+
+# getter and private
+class Car():
+    def __init__(self,brand,name):
+        self.__brand=brand
+        self.name=name
+    def get_brand(self):
+        return self.__brand
+    def fullname(self):
+        return f"{self.__brand} {self.name}"
+        
+class ElectricCar(Car):
+    def __init__(self,brand,name,battery_size):
+        super().__init__(brand,name)
+        self.battery_size=battery_size
+my_Car=ElectricCar("Mahindra","xuv600","800km")
+print(my_Car.get_brand())
+print(my_Car.name)
+print(my_Car.battery_size)
+print(my_Car.fullname())
+
+# polymorphism and total number of instances created:-
+class Car():
+    total_car=0
+    def __init__(self,brand,name):
+        self.__brand=brand
+        self.name=name
+        Car.total_car+=1
+    def get_brand(self):
+        return self.__brand
+    def fullname(self):
+        return f"{self.__brand} {self.name}"
+    def fuel_type(self):
+        return "petrol or diesel"
+        
+class ElectricCar(Car):
+    def __init__(self,brand,name,battery_size):
+        super().__init__(brand,name)
+        self.battery_size=battery_size
+    def fuel_type(self):
+        return "electric"
+my_Car=ElectricCar("Mahindra","xuv600","800km")
+print(my_Car.get_brand())
+print(my_Car.name)
+print(my_Car.battery_size)
+print(my_Car.fullname())
+print(my_Car.fuel_type())
+carNew=Car("Hyundai","verna")
+print(carNew.fuel_type())
+print(Car.total_car)
+
+output:-
+Mahindra
+xuv600
+800km
+Mahindra xuv600
+electric
+petrol or diesel
+2
