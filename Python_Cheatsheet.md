@@ -446,3 +446,108 @@ class ElectricCar2(Engine, Battery):
 fortuner=ElectricCar2(True, True, "Toyota", "Fortuner")
 print(fortuner.hasBattery)  # True
 print(fortuner.hasEngine)   # True
+
+
+# Decorators
+
+import time
+def timer(func):
+    def wrapper(*args,**kwargs):
+        start=time.time()
+        result=func(*args,**kwargs)
+        end=time.time()
+        print(f"{func.__name__} took {end-start} time to ran")
+        return result
+    return wrapper
+@timer 
+def example_func(times):
+    time.sleep(times)
+    print("ran")
+   
+example_func(2)
+
+output => ran
+example_func took 2.0 time to ran
+
+# 2nd Example
+
+def counter(func):
+    def wrapper(*args,**kwargs):
+        result=func(*args,**kwargs)
+        args_value=list(args)
+        print(args_value)
+        return result
+    return wrapper
+@counter
+def add(a,b):
+    return (a+b)
+print(add(8,10))
+
+# 3rd Example
+
+def greeting(func):
+    def wrapper(*args,**kwargs):
+        args_value=list(arg for arg in args)
+        print(args_value)
+        kwargs_value=dict((k,v) for k,v in kwargs.items())
+        print(kwargs_value)
+        return func(*args,**kwargs)
+    return wrapper
+@greeting
+def greet(name,bro_value,greeting="Hello!"):
+    print(f"{greeting} {name} {bro_value}")
+
+greet(name="Anubhav",bro_value="dost")
+
+output:-[]
+{'name': 'Anubhav', 'bro_value': 'dost'}
+Hello! Anubhav dost
+
+# 4th example
+def greeting(func):
+    def wrapper(*args,**kwargs):
+        args_value=','.join(arg for arg in args)
+        print(args_value)
+        kwargs_value=','.join(f"{k}:{v}" for k,v in kwargs.items())
+        print(kwargs_value)
+        return func(*args,**kwargs)
+    return wrapper
+@greeting
+def greet(name,bro_value,greeting="Hello!"):
+    print(f"{greeting} {name} {bro_value}")
+
+greet("dost","Anubhav",greeting="Hor")
+
+output:-dost,Anubhav
+greeting:Hor
+Hor dost Anubhav
+
+# cache using decorators
+import time
+
+def cache(func):
+    cache_value={}
+    def wrapper(*args):
+        if args in cache_value:
+            return cache_value[args]
+        result=func(*args)
+        cache_value[args]=result
+        print(cache_value)
+        return result
+    return wrapper
+        
+@cache
+def add(a,b):
+    time.sleep(4)
+    return a+b
+
+
+print(add(9,10))
+print(add(9,10))
+print(add(9,10))
+print(add(91,10))
+print(add(9,10))
+
+* for first three print statements it will take only 4sec as it will be cached and then it will take 4s again for last 2 statements as last statement is already cached
+
+
